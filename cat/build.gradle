@@ -1,0 +1,39 @@
+
+dependencies {
+
+    //自己的引用
+
+    /* 子模块之间的依赖 */
+    implementation libraries['mysql-connector-java']
+    implementation libraries['druid']
+    implementation libraries['swagger2']
+    implementation libraries['swagger-ui']
+    implementation libraries['spring-boot-starter-data-redis']
+    implementation libraries['mybatis-plus-boot-starter']
+    implementation libraries['freemarker']
+
+
+}
+
+
+////////////////////////////部署信息//////////////////////////////////////
+/*ssh.settings {
+    knownHosts = allowAnyHosts
+}
+task deploy() {
+    def project_version = '3.0.3'
+    def targetDir = '/data/docker/platform/auth'
+    def jarName = 'insurance-auth-3.0.jar'
+    doLast {
+        ssh.run {
+            session(remotes.server) {
+                put from: "${buildDir}/libs/${jarName}", into: "${targetDir}"
+                execute  """
+                    ${targetDir}/build.sh ${project_version}
+                """
+
+            }
+        }
+    }
+}*/
+////////////////////////////////////////////////////////////////////////////////

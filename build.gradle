@@ -1,0 +1,84 @@
+//buildscript中的声明是gradle脚本自身需要使用的资源。可以声明的资源包括依赖项、第三方插件、maven仓库地址等。
+//
+//而在build.gradle文件中直接声明的依赖项、仓库地址等信息是项目自身需要的资源。
+//buildScript块的repositories主要是为了Gradle脚本自身的执行，获取脚本依赖插件。我在写的一篇博客《尝试Artifactory》中Gradle脚本需要com.jfrog.artifactory插件才能执行成功，而这个插件是从URL为https://plugins.gradle.org/m2/的Maven仓库获得。
+//
+//根级别的repositories主要是为了当前项目提供所需依赖包，比如log4j、spring-core等依赖包可从mavenCentral仓库获得。
+//
+//allprojects块的repositories用于多项目构建，为所有项目提供共同所需依赖包。而子项目可以配置自己的repositories以获取自己独需的依赖包
+//allprojects是对所有project的配置，包括Root Project。而subprojects是对所有Child Project的配置。
+
+plugins {
+    id("org.springframework.boot") version "2.1.9.RELEASE"
+    id("org.hidetake.ssh") version "2.9.0"//远程传输文件
+    id("java")
+}
+
+apply from: 'dependencies.gradle'
+// 所有模块/项目的通用配置
+allprojects {
+    group 'com.licc.pet'
+    version '1.0-SNAPSHOT'
+    apply plugin: 'idea'
+    apply plugin: 'java'
+
+    repositories {
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        mavenCentral()
+    }
+
+    task hello { task -> println "I'm $task.project.name" }
+
+//项目部署远程配置                                //
+/*    remotes {
+        server {
+            host = '192.168.10.36'
+            user = 'rayeye'
+            // password 和 identity 只用其中一个
+            password = 'ww2233ee'
+            //identity = file("${System.properties['user.home']}/.ssh/id_rsa")
+        }
+    }*/
+}
+
+
+// 子模块/项目的统一配置
+subprojects {
+    apply plugin: 'java'
+    /* 注意gradle插件不再自动应用，所以这里需要指定 */
+    apply plugin: 'org.springframework.boot'
+    /* 依赖管理插件仍然是一个spring-boot-gradle-plugin传递依赖，所以无需在build.gradle配置中明确列出此依赖。 */
+    apply plugin: 'io.spring.dependency-management' /* 依赖管理，用来传递spring的依赖 */
+
+    // 指定JDK版本
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+    /* java编译的时候缺省状态下会因为中文字符而失败 */
+    [compileJava,compileTestJava,javadoc]*.options*.encoding = 'UTF-8'
+
+
+    dependencies {
+        implementation libraries['spring-boot-starter']
+        implementation libraries['spring-boot-starter-web']
+        implementation libraries['spring-boot-starter-log4j2']
+        implementation libraries['disruptor']
+        implementation libraries['fastjson']
+        implementation libraries['commons-lang3']
+
+        implementation libraries['lombok']
+        annotationProcessor libraries['lombok']
+
+
+        testImplementation libraries['lombok']
+        testAnnotationProcessor libraries['lombok']
+        testImplementation libraries['spring-boot-starter-test']
+        testImplementation libraries['junit']
+
+    }
+    configurations {
+        //移除spring boot 默认logger依赖
+        all*.exclude module: 'spring-boot-starter-logging'
+        all*.exclude module: 'jcl-over-slf4j'
+        all*.exclude module: 'logback-classic'
+    }
+}
