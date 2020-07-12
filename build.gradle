@@ -59,6 +59,7 @@ subprojects {
 
     dependencies {
         implementation libraries['spring-boot-starter']
+        implementation libraries['spring-boot-starter-aop']
         implementation libraries['spring-boot-starter-web']
         implementation libraries['spring-boot-starter-log4j2']
         implementation libraries['disruptor']

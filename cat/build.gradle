@@ -10,6 +10,7 @@ dependencies {
     implementation libraries['swagger-ui']
     implementation libraries['spring-boot-starter-data-redis']
     implementation libraries['mybatis-plus-boot-starter']
+    implementation libraries['mybatis-plus-generator']
     implementation libraries['freemarker']
 
 
