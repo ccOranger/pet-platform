@@ -1,7 +1,7 @@
 package com.licc.cat.mapper;
 
-import com.licc.cat.entity.PetInfo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.licc.cat.entity.PetInfo;
 
 /**
  * <p>

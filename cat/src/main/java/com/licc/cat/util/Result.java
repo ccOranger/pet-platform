@@ -33,15 +33,16 @@ public class Result<T> implements Serializable {
     )
     private T data = null;
 
-    public Result(int code, String message, T data){
+    public Result(int code, String message, T data) {
         this.code = code;
-        this.message = message ;
+        this.message = message;
         this.data = data;
     }
 
-    public Result(){
+    public Result() {
 
     }
+
     public static Result build() {
         return new Result();
     }

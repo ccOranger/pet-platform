@@ -6,9 +6,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
- *  @author: 李臣臣
- *  @Date: 2020/01/06 0006 15:48
- *  @Description: 分页插件配置
+ * @author: 李臣臣
+ * @Date: 2020/01/06 0006 15:48
+ * @Description: 分页插件配置
  */
 @EnableTransactionManagement(proxyTargetClass = true)
 @Configuration

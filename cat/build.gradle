@@ -1,4 +1,3 @@
-
 dependencies {
 
     //自己的引用
@@ -13,7 +12,9 @@ dependencies {
     implementation libraries['mybatis-plus-generator']
     implementation libraries['freemarker']
 
-
+    implementation libraries['httpcore']
+    implementation libraries['httpclient']
+    implementation libraries['bcprov-jdk16']
 }
 
 

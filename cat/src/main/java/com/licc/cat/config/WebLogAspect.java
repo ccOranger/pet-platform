@@ -1,6 +1,5 @@
 package com.licc.cat.config;
 
-import com.google.common.collect.Lists;
 import com.licc.cat.util.Result;
 import com.licc.cat.util.ResultCode;
 import lombok.extern.slf4j.Slf4j;

@@ -29,7 +29,7 @@ public class MybatisplusTest {
     private static String basePackage = "com.licc.cat";
 
     //要生成的表名
-    private static String[] tables ={"attaches","cat_dynamic","location_info","pet_info","user_cat_relation","user_info","user_relation","variety_dic"};
+    private static String[] tables = {"attaches", "cat_dynamic", "location_info", "pet_info", "user_cat_relation", "user_info", "user_relation", "variety_dic"};
     //数据库配置四要素
     private static String driverName = "com.mysql.cj.jdbc.Driver";
     private static String url = "jdbc:mysql://47.101.11.64:33310/db_pet?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=GMT";

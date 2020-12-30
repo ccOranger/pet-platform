@@ -2,9 +2,9 @@ package com.licc.cat.util;
 
 
 /**
- *  @author: 李臣臣
- *  @Date: 2020/01/02 0002 16:14
- *  @Description: 结果code
+ * @author: 李臣臣
+ * @Date: 2020/01/02 0002 16:14
+ * @Description: 结果code
  */
 public class ResultCode {
 
