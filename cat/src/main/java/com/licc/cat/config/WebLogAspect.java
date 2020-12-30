@@ -44,7 +44,7 @@ public class WebLogAspect {
      *使用@AfterThrowing用来处理当切入内容部分抛出异常之后的处理逻辑
      */
 
-    @Pointcut("execution(public * com.rayeye.insurance.dic.controller..*.*(..))")
+    @Pointcut("execution(public * com.licc.cat.controller..*.*(..))")
     public void webLog() {
     }
 

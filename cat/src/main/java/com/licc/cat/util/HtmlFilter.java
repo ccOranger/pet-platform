@@ -79,7 +79,7 @@ public class HtmlFilter {
     public static void main(String[] args) {
         System.out.println("=====<a></a><script>alert(\"前置通知开始\");</script>=====");
         System.out.println(encode("=====<a></a><script>alert(\"前置通知开始\");</script>====="));
-        String str = encode("http://test.rayeye.cn:808 8/workspace /myWorkspace.do?projectId=44#1306");
+        String str = encode("http://cn:808 8/workspace /myWorkspace.do?projectId=44#1306");
         System.out.println("编码：" + str);
         System.out.println("解码：" + restoreEscaped(str));
     }

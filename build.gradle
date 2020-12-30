@@ -33,9 +33,9 @@ allprojects {
 /*    remotes {
         server {
             host = '192.168.10.36'
-            user = 'rayeye'
+            user = 'root'
             // password 和 identity 只用其中一个
-            password = 'ww2233ee'
+            password = 'root'
             //identity = file("${System.properties['user.home']}/.ssh/id_rsa")
         }
     }*/

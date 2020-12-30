@@ -23,7 +23,7 @@ spring:
 exception:
   send:
     enable: true
-    emil: licc@rayeye.cn
+    emil: just_licc@163.com
 
 
 # 打印日志

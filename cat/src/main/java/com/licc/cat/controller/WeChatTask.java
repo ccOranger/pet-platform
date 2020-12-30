@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @package: com.rayeye.cloud.controller
+ * @package: com.licc.cat.controller
  * @className: ${TYPE_NAME}
  * @description: 定时任务
  * @author: 李臣臣
