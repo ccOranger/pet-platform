@@ -51,7 +51,7 @@ public class WeChatController {
     })
     public Result jscode2session(String code) {
 
-        String url = Constants.WeiXin_ALIAS.OAUTH_URL.replace("APPID", appID).replace("APPSECRET", appSecret).replace("JSCODE", code);
+        String url = Constants.WeiXin_ALIAS.OAUTH_URL.replace("APPID", appID).replace("SECRET", appSecret).replace("JSCODE", code);
         Result result = weChatHttpInterface.sendRequest(url, Constants.METHOD.GET, null, Constants.WeiXin_ALIAS.OAUTH_URL_CONTENT);
         if (result.getCode() == ResultCode.HTTP_200) {
 

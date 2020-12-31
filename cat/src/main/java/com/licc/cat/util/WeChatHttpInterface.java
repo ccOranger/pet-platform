@@ -37,8 +37,10 @@ public class WeChatHttpInterface {
      */
     public Result sendRequest(String url, String method, Map map, String content) {
 
-        String token = redisUtil.get(Constants.WeiXin_ALIAS.ACCESS_TOKEN).toString();
-        url = url.replace("ACCESS_TOKEN", token);
+        if (redisUtil.hasKey(Constants.WeiXin_ALIAS.ACCESS_TOKEN)){
+            String token = redisUtil.get(Constants.WeiXin_ALIAS.ACCESS_TOKEN).toString();
+            url = url.replace("ACCESS_TOKEN", token);
+        }
 
         Map<String, String> headers = new HashMap<String, String>();
         Map<String, String> querys = new HashMap<String, String>();
@@ -76,7 +78,7 @@ public class WeChatHttpInterface {
             }
 
 
-            if (result1.getInteger("errcode") == 0) {
+            if ((!result1.containsKey("errcode")) || result1.getInteger("errcode") == 0) {
 
                 return Result.build().setData(result1);
 
